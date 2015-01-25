@@ -12,9 +12,33 @@ syntax on
 "--------
 " Vim UI
 "--------
-" color scheme
- set background=light
- color solarized
+
+" Set colorscheme to solarized
+colorscheme solarized
+
+" Change the Solarized background to dark or light depending upon the time of
+" day (5 refers to 5AM and 17 to 5PM). Change the background only if it is not
+" already set to the value we want.
+function! SetSolarizedBackground()
+    if strftime("%H") >= 8 && strftime("%H") < 18
+        if &background != 'light'
+            set background=light
+        endif
+    else
+        if &background != 'dark'
+            set background=dark
+        endif
+    endif
+endfunction
+
+" Set background on launch
+call SetSolarizedBackground()
+
+" Every time you save a file, call the function to check the time and change
+" the background (if necessary).
+if has("autocmd")
+    autocmd bufwritepost * call SetSolarizedBackground()
+endif
 
 " highlight current line
  au WinLeave * set nocursorline nocursorcolumn
@@ -135,7 +159,6 @@ let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#whitespace#enabled = 1
   "}
 " Tagbar
-let g:tagbar_left=1
 let g:tagbar_width=30
 let g:tagbar_autofocus = 1
 let g:tagbar_sort = 0
@@ -176,7 +199,7 @@ let NERDTreeChDirMode=2
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']
 " let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
 let NERDTreeShowBookmarks=1
-let NERDTreeWinPos = "right"
+let NERDTreeWinPos = "left"
 
 " nerdcommenter
 let NERDSpaceDelims=1
@@ -322,6 +345,23 @@ let g:SuperTabRetainCompletionType=2
 set wildignore+=*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store  " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 
+" vim-multiselect-cursors
+
+" Called once right before you start selecting multiple cursors
+function! Multiple_cursors_before()
+  if exists(':NeoCompleteLock')==2
+    exe 'NeoCompleteLock'
+  endif
+endfunction
+
+" Called once only when the multiple selection is canceled (default <Esc>)
+function! Multiple_cursors_after()
+  if exists(':NeoCompleteUnlock')==2
+    exe 'NeoCompleteUnlock'
+  endif
+endfunction
+
+
 " Keybindings for plugin toggle
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
@@ -399,3 +439,5 @@ vmap <C-c> "+yi
 vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
+
+

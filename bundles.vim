@@ -51,6 +51,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/syntastic'
 Bundle 'bronson/vim-trailing-whitespace'
 Plugin 'bling/vim-airline'
+Plugin 'terryma/vim-multiple-cursors'
 
 "-------------
 " Other Utils
