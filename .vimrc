@@ -147,7 +147,10 @@ let g:airline#extensions#tabline#enabled = 1
   nmap <leader>6 <Plug>AirlineSelectTab6
   nmap <leader>7 <Plug>AirlineSelectTab7
   nmap <leader>8 <Plug>AirlineSelectTab8
-  nmap <leader>9 <Plug>AirlineSelectTab9t g:airline_powerline_fonts = 1
+  nmap <leader>9 <Plug>AirlineSelectTab9
+
+  "enable/disable loading of powerline symbols
+  let g:airline_powerline_fonts = 1
 
   " enable/disable tagbar integration >
   let g:airline#extensions#tagbar#enabled = 1
@@ -191,7 +194,11 @@ endif
 " Nerd Tree
 
 "autostart Nerd Tree
-autocmd vimenter * NERDTree
+"autocmd vimenter * NERDTree
+
+" Start nerd tree if no files open
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 let NERDChristmasTree=0
 let NERDTreeWinSize=30
