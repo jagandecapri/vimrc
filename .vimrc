@@ -81,6 +81,10 @@ set shiftwidth=4    " indent width
 " set smarttab
 set expandtab       " expand tab to space
 
+"Avoid overwriting undo buffer
+inoremap <c-u> <c-g>u<c-u>
+inoremap <c-w> <c-g>u<c-w>
+
 autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
