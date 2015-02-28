@@ -19,6 +19,6 @@ Customized from [Maple's Vim Config](https://github.com/humiaozuzu/dot-vimrc)
 
         git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
-4. Install bundles. Launch vim(ignore the errors and they will disappear after installing needed plugins)and run:
+4. Install bundles. Launch vim (ignore the errors and they will disappear after installing needed plugins) and run:
 
         :BundleInstall
