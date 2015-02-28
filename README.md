@@ -12,7 +12,7 @@ Customized from [Maple's Vim Config](https://github.com/humiaozuzu/dot-vimrc)
 
 2. Clone and install this repo:
 
-        git clone git clone git@bitbucket.org:jagandecapri/vim_jack.git ~/.vim
+        git clone https://github.com/jagandecapri/vimrc.git ~/.vim
         ln -s ~/.vim/vimrc ~/.vimrc
 
 3. Setup `Vundle`:
