@@ -410,15 +410,16 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 " When editing a file, always jump to the last cursor position
-autocmd BufReadPost *
-      \ if ! exists("g:leave_my_cursor_position_alone") |
-      \     if line("'\"") > 0 && line ("'\"") <= line("$") |
-      \         exe "normal g'\"" |
-      \     endif |
-      \ endif
-
+"autocmd BufReadPost *
+"      \ if ! exists("g:leave_my_cursor_position_alone") |
+"      \     if line("'\"") > 0 && line ("'\"") <= line("$") |
+"      \         exe \"normal g'\"" |
+" remove \ front of "normal
+"      \     endif |
+"      \ endif
+"
 " w!! to sudo & write a file
-cmap w!! %!sudo tee >/dev/null %
+"cmap w!! %!sudo tee >/dev/null %
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
