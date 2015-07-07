@@ -48,6 +48,12 @@ endif
  au WinEnter * set cursorline cursorcolumn
  set cursorline cursorcolumn
 
+" make a copy of file to be saved and overwrite original file
+" this is needed because the fast mode of saving
+" as in renaming the file and writing to a new one
+" conflicts with test runners such as karma
+set backupcopy=yes
+
 " search
 set incsearch
 "set highlight 	" conflict with highlight current line
